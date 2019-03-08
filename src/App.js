@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { startTimerAsync, restartTimerAsync, getJoke } from './ducks/reducer'
 
 class App extends Component {
+
   render() {
+    const { timerStarted, timerEnded, joke, startTimerAsync, restartTimerAsync, getJoke} = this.props
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className='timer-background' id='start'>
+        </div>
+        <div className='timer'>
+          <h1>3:00</h1>
+          {
+            (!timerStarted && <a href="#start"><button onClick={() => startTimerAsync()}>Start Timer</button></a>)
+          }
+          {
+            (timerEnded && <a href="#"><button onClick={() => restartTimerAsync()}>Restart</button></a>)
+          }
+        </div>
+        <div className='indicator'></div>
+        <div className='joke'>
+          <p>{joke}</p>
+          <button onClick={() => getJoke()}>Get Joke</button>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (reduxState) => {
+  const { duration, timerStarted, timerEnded, joke } = reduxState;
+  return {
+    duration,
+    timerStarted,
+    timerEnded,
+    joke
+  }
+}
+
+const mapDispatchToProps = {
+  startTimerAsync,
+  restartTimerAsync,
+  getJoke
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

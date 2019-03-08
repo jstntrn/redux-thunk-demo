@@ -1,33 +1,101 @@
 .App {
-  text-align: center;
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.timer-background {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8a2387+0,e94057+50,f27121+100 */
+  background: #8a2387; /* Old browsers */
+  background: -moz-linear-gradient(left, #8a2387 0%, #e94057 50%, #f27121 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #8a2387 0%,#e94057 50%,#f27121 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #8a2387 0%,#e94057 50%,#f27121 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a2387', endColorstr='#f27121',GradientType=1 ); /* IE6-9 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 3s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.timer-background:target {
+  left: 100vw;
+}
+
+.timer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  position: relative;
+  top: 40vh;
+}
+
+p {
+  padding: 10px;
+}
+
+.joke {
+  display: flex;
   color: white;
+  z-index: 2;
+  position: fixed;
+  bottom: 20px;
+  right: 35px;
+  width: 100vw;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.indicator {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#67b26f+0,4ca2cd+100 */
+  background: #67b26f; /* Old browsers */
+  background: -moz-linear-gradient(left, #67b26f 0%, #4ca2cd 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #67b26f 0%,#4ca2cd 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #67b26f 0%,#4ca2cd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67b26f', endColorstr='#4ca2cd',GradientType=1 ); /* IE6-9 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+h1 {
+  color: #ffffff;
+  font-size: 50px;
+  opacity: .8;
 }
+
+button {
+  background: none;
+  border: 1px solid white;
+  background-color: #ffffff;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  opacity: .8;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+audio {
+  z-index: -2
+}
+
+
